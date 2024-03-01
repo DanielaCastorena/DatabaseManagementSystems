@@ -17,7 +17,7 @@ class Table:
 
 #set statements
   def setAttributes(self, input):
-    return self.attributes
+    self.attributes = input
   
   def printTable(self):
     return 0

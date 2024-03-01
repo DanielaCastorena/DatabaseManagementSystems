@@ -15,16 +15,18 @@ def inputCleaner(removeWord): #removes ; and command
   return query.replace(removeWord, "")
 
 def checkTable(table): #checks for an existing table
-  if table in subprocess.run(['ls', workingDataBase,  '|', 'grep', table], output=True, text=True).stdout:
-    return 1
-  else:
-    return 0
+    result = subprocess.run(['ls', workingDataBase], capture_output=True, text=True)
+    if table in result.stdout:
+        return 1
+    else:
+        return 0
   
 def databaseCheck(database): #checks for an existing database 
- if database in subprocess.run(['ls', '|', 'grep', database], output=True, text=True).stdout:
-    return 1
- else:
-    return 0
+    result = subprocess.run(['ls', '|', 'grep', database], capture_output=True, text=True)
+    if database in result.stdout:
+        return 1
+    else:
+        return 0
   
 while (userQuery != ".EXIT"):
   userQuery = input("danielaQL> ")
